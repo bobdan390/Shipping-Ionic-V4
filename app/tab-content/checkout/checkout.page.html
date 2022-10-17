@@ -1,0 +1,104 @@
+<ion-content class="background-primary">
+
+	<ion-fab-button id="btnHelp" color="secondary" (click)="global._openModalContacto()"><ion-icon name="help"></ion-icon></ion-fab-button>
+
+	<h6 class="text-center color-dark mt-4 position-relative">
+		<ion-icon name="arrow-back" class="position-absolute" style="left: -2px; top: 3px;" routerLink="/tabs/tabs/cart"></ion-icon>
+		Pago
+	</h6>
+
+	<div class="card mt-4 card-2 pb-2">
+	  <div class="card-body text-center px-o p-0">
+	  	<div class="" #itemMap id="itemMap" style="height: 175px;"></div>
+
+	  	<div class="row mx-0">
+	  		<div class="col-3 py-3 pr-0">
+	  			<img [src]="global.baseImages + logoRestaurant" style="width: 40px;">
+	  		</div>
+	  		<div class="col-9">
+	  			<h5 class="text-left mt-3 color-dark mb-0 item-title-promocion" style="font-size: 14px;">{{nameRestaurant}}</h5>
+	  			<small class="color-gray float-left text-left"> <img src="./../../../assets/images/pin-rojo-icon.png"> 
+	  				{{restAddress}}
+	  			</small>
+	  		</div>
+	  	</div>
+
+	  	<div class="row mx-0" style="height: 13px;">
+	  		<div class="col-3 py-0 pr-0 text-center">
+	  			<svg width="2" height="50" viewBox="0 0 2 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M1 1.27588V49.2759" stroke="#1B4156" stroke-linecap="square" stroke-dasharray="4"/>
+				</svg>
+
+	  		</div>
+	  	</div>
+
+	  	<div class="row mx-0">
+	  		<div class="col-3 pt-3 pr-0">
+	  			<ion-avatar slot="start" class="w-100">
+		         	<img src="./../../../assets/images/person-logo.png" style="width: 40px; height: 40px;">
+		         </ion-avatar>
+	  		</div>
+	  		<div class="col-9">
+	  			<h5 class="text-left mt-3 color-dark mb-0 item-title-promocion" style="font-size: 14px;">{{name}}</h5>
+	  			<small class="color-gray float-left text-left"> <img src="./../../../assets/images/pin-icon.png"> 
+	  				{{userAddress}} <a class="text-primary" (click)="modalMap()"> &nbsp; Cambiar</a>
+	  			</small>
+	  		</div>
+
+	  		<div class="col-9 offset-3">
+	  			<h5 class="text-left mt-3 color-dark mb-0 item-title-promocion" style="font-size: 14px;">
+	  				<ion-icon name="create" style="color: #c5c5c5; margin-top: 1px; float: left; margin-right: 5px;"></ion-icon> Nota 
+	  			</h5>
+	  			<div class="form-group mt-2">
+				    <textarea type="text" class="form-control" placeholder="Nota del envio" [(ngModel)] = "nota"></textarea>
+				</div>
+	  		</div>
+	  	</div>
+
+	  	<div class="row" *ngIf="isChange==true">
+	  		<div class="col-5 offset-4 pr-0 pl-1 pb-0" >
+				<span class="label-l1 float-left">Delivery</span>
+			</div>
+			<div class="col-2 pr-0 pl-1 pb-0">
+				<label class="label-r label-r float-right">${{formatear(delivery)}}</label>
+			</div>
+			<div class="col-5 offset-4 pr-0 pl-1 pb-2">
+				<span class="label-l1 float-left">Total</span>
+			</div>
+			<div class="col-2 pr-0 pl-1 pb-2">
+				<label class="label-r label-r float-right">${{formatear(total)}}</label>
+			</div>
+	  	</div>
+
+	  </div>
+	</div>
+
+	<div class="row mt-2 px-3 pt-4">
+		<div class="col-12 px-0 mb-2">
+			<h6 class="label-1">Método de pago</h6>
+		</div>
+	</div>
+
+	<div *ngFor="let metodo of metodos" class="{{metodo.css}}" (click) = "presentModal(metodo)">
+	  <div class="card-body text-center px-o p-0">
+	  	<div class="row">
+	  		<div class="col-12 pl-3">
+	  			<h5 class="text-left color-dark metodo-label ml-3">{{metodo.name}}</h5>
+	  		</div>
+	  	</div>
+
+	  </div>
+	</div>
+
+	<div class="group-button mb-3">
+		<button type="button" class="btn btn-success w-100 mt-3" (click) = "completarOrden()" [disabled] = "loading || (payment_id==null && cupon==null)">
+			<span *ngIf="loading==false">
+		  		Completar orden
+		  	</span>
+		  	<div class="spinner-border text-light" role="status" *ngIf="loading==true">
+			  <span class="sr-only">Loading...</span>
+			</div>
+		</button>
+	</div>
+
+</ion-content>

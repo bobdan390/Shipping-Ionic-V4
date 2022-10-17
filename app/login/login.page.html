@@ -1,0 +1,42 @@
+<ion-content class="background-primary">
+	<h6 class="text-center color-dark mt-5">Vive la experiencia Shipping</h6>
+
+	<div class="card mt-5 card-1">
+
+	  <div class="card-body text-center">
+	  	<h6 class="color-dark mt-2">Ingresa tus datos de acceso</h6>
+
+	  	<form>
+		  <div class="form-group mt-4">
+		    <input type="email" class="form-control" id="email" placeholder="ejemplo@shipping.com" [(ngModel)] = "correo" [ngModelOptions]="{standalone: true}">
+		  </div>
+		  <div class="form-group mt-4">
+		    <input type="password" class="form-control" id="password" placeholder="******" [(ngModel)] = "password" [ngModelOptions]="{standalone: true}">
+		  </div>
+
+		  <p class="color-gray h7 mt-4 text-right" (click) = "recover()">
+		  	¿Olvido su contraseña?
+		  </p>
+
+		  <button type="button" class="btn btn-success w-100" (click) = "login()" [disabled] = "cargando">
+		  	<span *ngIf="cargando==false">
+		  		Iniciar Sesión
+		  	</span>
+		  	<div class="spinner-border text-light" role="status" *ngIf="cargando==true">
+			  <span class="sr-only">Loading...</span>
+			</div>
+		  </button>
+
+		</form>
+
+		<p class="color-gray h7 mt-4 text-center" routerLink="/register">
+		  	Regístrate
+		</p>
+
+
+	  </div>
+	</div>
+			<p class="text-center h7 color-dark mt-4" style="cursor:pointer;" routerLink="/tabs/tabs/categories">
+		  	Explorar shipping
+		</p>
+</ion-content>

@@ -1,0 +1,29 @@
+ion-content {
+	--padding-end: 0 !important;
+    --padding-start: 0 !important;
+
+    h6 {
+    	text-align: center;
+	    position: absolute;
+	    width: 100%;
+	    z-index: 1111;
+	    padding-top: 14px;
+	    font-weight: 500;
+    }
+}
+
+ion-footer {
+	.lbl-pedido {
+    	font-weight: 600;
+		font-size: 14px;
+		line-height: 24px;
+		color: #6B7CAA;
+    }
+
+    .lbl-hora {
+    	font-size: 12px;
+		line-height: 8px;
+		text-align: right;
+		color: #9C9C9C;
+    }
+}

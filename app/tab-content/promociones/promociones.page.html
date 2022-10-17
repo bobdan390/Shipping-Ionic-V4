@@ -1,0 +1,73 @@
+<ion-header class="ion-no-border px-4">
+  <h2 class="title1 text-center mb-3">
+
+  	<ion-icon name="arrow-back" class="icon-left-2" routerLink="/tabs"></ion-icon>
+
+  	Nuestras <br> promociones
+  	<!--
+  	<span class="icon-right" routerLink="/orders">
+  		<svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path fill-rule="evenodd" clip-rule="evenodd" d="M2.14046 15.8599C1.02935 15.8599 1.02935 14.1932 2.14046 14.1932C3.06094 14.1932 3.80713 13.447 3.80713 12.5266V8.3599C3.80713 4.67801 6.7919 1.69324 10.4738 1.69324C14.1557 1.69324 17.1405 4.67801 17.1405 8.3599V12.5266C17.1405 13.447 17.8867 14.1932 18.8071 14.1932C19.9182 14.1932 19.9182 15.8599 18.8071 15.8599H2.14046ZM15.4738 12.5266V8.3599C15.4738 5.59848 13.2352 3.3599 10.4738 3.3599C7.71237 3.3599 5.47379 5.59848 5.47379 8.3599V12.5266C5.47379 13.1337 5.31147 13.7029 5.02785 14.1932H15.9197C15.6361 13.7029 15.4738 13.1337 15.4738 12.5266ZM10.4738 20.0236C11.3651 20.0236 12.189 19.5491 12.6363 18.778C12.9586 18.2225 12.5577 17.5266 11.9155 17.5266H9.03213C8.38987 17.5266 7.98903 18.2225 8.3113 18.778C8.75854 19.5491 9.58246 20.0236 10.4738 20.0236Z" fill="black"/>
+			<mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="1" y="1" width="19" height="20">
+			<path fill-rule="evenodd" clip-rule="evenodd" d="M2.14046 15.8599C1.02935 15.8599 1.02935 14.1932 2.14046 14.1932C3.06094 14.1932 3.80713 13.447 3.80713 12.5266V8.3599C3.80713 4.67801 6.7919 1.69324 10.4738 1.69324C14.1557 1.69324 17.1405 4.67801 17.1405 8.3599V12.5266C17.1405 13.447 17.8867 14.1932 18.8071 14.1932C19.9182 14.1932 19.9182 15.8599 18.8071 15.8599H2.14046ZM15.4738 12.5266V8.3599C15.4738 5.59848 13.2352 3.3599 10.4738 3.3599C7.71237 3.3599 5.47379 5.59848 5.47379 8.3599V12.5266C5.47379 13.1337 5.31147 13.7029 5.02785 14.1932H15.9197C15.6361 13.7029 15.4738 13.1337 15.4738 12.5266ZM10.4738 20.0236C11.3651 20.0236 12.189 19.5491 12.6363 18.778C12.9586 18.2225 12.5577 17.5266 11.9155 17.5266H9.03213C8.38987 17.5266 7.98903 18.2225 8.3113 18.778C8.75854 19.5491 9.58246 20.0236 10.4738 20.0236Z" fill="white"/>
+			</mask>
+			<g mask="url(#mask0)">
+			</g>
+		</svg>
+
+  	</span>
+  	-->
+  </h2>
+</ion-header>
+
+<ion-content class="background-primary pb-3">
+
+	<ion-fab-button id="btnHelp" color="secondary" (click)="global._openModalContacto()"><ion-icon name="help"></ion-icon></ion-fab-button>
+	
+	<div class="" *ngIf="loading==true">
+		<div class="card mt-3 card-2 pb-2"  *ngFor="let number of [0,1,2]">
+			<div class="card-body text-center px-o p-0">
+				<div class="div-loading" style="height: 145px;"></div>
+				<div class="row row mx-0">
+					<div class="col-3 py-2">
+						<div class="div-loading" style="height: 37px;"></div>
+					</div>
+					<div class="col-6">
+						<h5 class="mt-2 mb-0 div-loading" style="height: 21px;"></h5>
+						<small class="w-100 mt-1 div-loading" style="display: table; height: 15px;"></small>
+					</div>
+					<div class="col-3">
+						<h5 class="mt-2 mb-0 div-loading" style="height: 21px;"></h5>
+						<small class="w-100 mt-1 div-loading" style="display: table; height: 15px;"></small>
+					</div>
+					<div class="col-7">
+						<h5 class="mt-1 mb-0 div-loading" style="height: 21px;"></h5>
+					</div>
+				</div>
+			</div>
+		</div>		
+	</div>
+
+	<div class="card mt-3 card-2 pb-2" *ngFor="let promo of promos">
+	  <div class="card-body text-center px-o p-0" (click)="toItem(promo);">
+	  	<div class="img-top-card" [style]="promo.background"></div>
+
+	  	<div class="row">
+	  		<div class="col-3 py-3 pr-0">
+	  			<img [src]="global.baseImages + promo.restaurant.logo">
+	  		</div>
+	  		<div class="col-6 pl-0">
+	  			<h5 class="text-left mt-3 color-dark mb-0 item-title-promocion" >{{promo.restaurant.name}}</h5>
+	  			<small class="color-gray">{{promo.description}}</small>
+	  		</div>
+	  		<div class="col-3 pl-0">
+	  			<p class="color-green mt-3">${{promo.price}}</p>
+	  		</div>
+	  	</div>
+
+	  </div>
+	</div>
+
+	<br>
+
+</ion-content>

@@ -1,0 +1,51 @@
+<ion-content class="background-primary">
+	<h6 class="text-center color-dark mt-5 position-relative">
+		Verificación
+	</h6>
+
+	<div class="card mt-5 card-1">
+
+	  <div class="card-body text-center">
+	  	<h6 class="color-dark mt-2">Ingresa el código de verificación</h6>
+	  	<p class="color-gray h7 mt-3">
+	  		Se ha enviado un email con un código de <br> verificación a <span class="font-weight-bold">{{data.correo}}</span>
+	  	</p>
+
+	  	<form>
+		  <div class="form-group mt-5 px-4">
+		  	<div class="row">
+		  		<div class="col px-2">
+		  			 <input type="text" class="form-control" #codigo1  placeholder="_" autofocus="true" maxlength="1" (input)='onChange($event, 1)'>
+		  		</div>
+		  		<div class="col px-2">
+		  			 <input type="text" class="form-control" #codigo2 placeholder="_" maxlength="1" (input)='onChange($event, 2)'>
+		  		</div>
+		  		<div class="col px-2">
+		  			 <input type="text" class="form-control" #codigo3 placeholder="_" maxlength="1" (input)='onChange($event, 3)'>
+		  		</div>
+		  		<div class="col px-2">
+		  			 <input type="text" class="form-control" #codigo4 placeholder="_" maxlength="1" (input)='onChange($event, 4)'>
+		  		</div>
+		  		<div class="col px-2">
+		  			 <input type="text" class="form-control" #codigo5 placeholder="_" maxlength="1" (input)='onChange($event, 5)'>
+		  		</div>
+		  	</div>
+		   
+		  </div>
+		  <button type="button" class="btn btn-success w-100" (click)="verificarCodigo()" [disabled] = "cargando">
+		  	<span *ngIf="cargando==false">
+		  		Verificar email
+		  	</span>
+		  	<div class="spinner-border text-light" role="status" *ngIf="cargando==true">
+			  <span class="sr-only">Loading...</span>
+			</div>
+		  </button>
+		</form>
+	  </div>
+	</div>
+
+	<p class="color-gray h7 mt-4 text-center" (click)="backToSend()">
+	  	No recibes el código?
+	</p>
+
+</ion-content>

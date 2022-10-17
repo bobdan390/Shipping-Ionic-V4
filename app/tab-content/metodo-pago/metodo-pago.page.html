@@ -1,0 +1,79 @@
+<ion-content class="background-primary">
+	<h6 class="text-center color-dark mt-4 position-relative">
+		<ion-icon name="close" class="position-absolute ml-3" style="left: -2px; top: 3px;" (click) = "closeModal()"></ion-icon>
+		Datos del pago
+	</h6>
+
+	<div class="text-center mt-4 py-4" *ngIf="metodo.var=='movil'">
+		<img src="./../../../assets/images/dinner-logo.png">
+	</div>
+
+	<div class="text-center mt-4 py-4" *ngIf="metodo.var=='transferencia'">
+		<img src="./../../../assets/images/dinner-logo.png">
+	</div>
+
+	<div class="text-center mt-4 py-4" *ngIf="metodo.var=='paypal'">
+		<img src="./../../../assets/images/paypal-logo.png">
+	</div>
+
+	<div class="text-center mt-4 py-4" *ngIf="metodo.var=='zelle'">
+		<img src="./../../../assets/images/zelle-logo.png">
+	</div>
+
+	<div class="text-left pl-3" >
+		Datos de {{metodo.name}}
+		<br />
+		{{metodo.date}}
+		<br />
+		{{metodo.date2}}
+		<br />
+		{{metodo.date3}}
+	</div>
+
+	<div class="card mt-5 card-1">
+
+	  <div class="card-body">
+	  	<h4 class="color-dark mt-2">Ingresa los detalles<br> de tu pago</h4>
+
+	  	<form class="row">
+
+		  <div class="col-12 form-group mt-2">
+		  		<label for="email" *ngIf="metodo.var=='movil'">Nro. Tel del pagador</label>
+		  		<label for="email" *ngIf="metodo.var=='transferencia'">Nombre y apellido del pagador</label>
+		  		<label for="email" *ngIf="metodo.var=='paypal' || metodo.var=='zelle'">Email del pagador</label>
+		  		<input type="text" class="form-control" name="email" placeholder="" [(ngModel)]="email">		   
+		  </div>
+
+		  <div class="col-12 form-group">
+		  		<label for="ref">Referencia</label>
+		  		<input type="text" class="form-control" name="referencia" placeholder="" [(ngModel)]="referencia">		   
+		  </div>
+
+		  <div class="col-12 form-group">
+		  		<label for="ref">Captura de pago (opcional)</label> <br/>
+		  		<button type="button" class="btn btn-link" (click) = "getPhoto()">
+		  			<span *ngIf="nameFile==''">Seleccionar imagen</span>
+		  			<span *ngIf="nameFile!=''"> {{nameFile}} </span>
+		  		</button>	   
+		  </div>
+
+		  <div class="col-12">
+		  	<button type="button" class="btn btn-success w-100" (click)="enviarPago()" [disabled] = "loading">
+
+		  		<span *ngIf="loading==false">
+			  		Enviar pago
+			  	</span>
+			  	<div class="spinner-border text-light" role="status" *ngIf="loading==true">
+				  <span class="sr-only">Loading...</span>
+				</div>
+
+		  	</button>
+		  </div>
+
+
+
+		</form>
+	  </div>
+	</div>
+
+</ion-content>
